@@ -1,1019 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Natchapon (Top) Sortrakul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --ink: #1a1a18;
-    --ink-mid: #4a4a45;
-    --ink-light: #8a8a82;
-    --ink-faint: #e8e6df;
-    --cream: #faf8f3;
-    --white: #ffffff;
-    --accent: #1a3a2a;
-    --accent-light: #2d5c42;
-    --accent-pale: #e8f0eb;
-    --gold: #b8973a;
-    --gold-pale: #f5f0e0;
-    --radius: 4px;
-    --radius-lg: 12px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(250, 248, 243, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--ink-faint);
-    padding: 0 48px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-mid);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--accent); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    padding: 120px 48px 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .hero-eyebrow {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent-light);
-    background: var(--accent-pale);
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 28px;
-  }
-
-  .hero-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(42px, 5vw, 68px);
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    margin-bottom: 28px;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--accent-light);
-  }
-
-  .hero-desc {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: var(--ink-mid);
-    max-width: 460px;
-    margin-bottom: 40px;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: white;
-    padding: 14px 28px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--ink);
-    padding: 14px 28px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    border: 1px solid var(--ink-faint);
-    transition: border-color 0.2s, transform 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-outline:hover { border-color: var(--ink-mid); transform: translateY(-1px); }
-
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .hero-stat-card {
-    background: var(--white);
-    border: 1px solid var(--ink-faint);
-    border-radius: var(--radius-lg);
-    padding: 24px 28px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .hero-stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(26,26,24,0.08);
-  }
-
-  .stat-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    margin-bottom: 6px;
-  }
-
-  .stat-value {
-    font-family: 'DM Serif Display', serif;
-    font-size: 32px;
-    color: var(--ink);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-sub {
-    font-size: 13px;
-    color: var(--ink-mid);
-    font-weight: 300;
-  }
-
-  .hero-stats-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 20px 28px;
-    background: var(--gold-pale);
-    border: 1px solid #e8d8a0;
-    border-radius: var(--radius-lg);
-  }
-
-  .tag {
-    font-size: 12px;
-    font-weight: 400;
-    color: #7a6020;
-    background: rgba(184,151,58,0.12);
-    padding: 5px 12px;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-  }
-
-  /* SECTIONS */
-  section {
-    padding: 100px 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    margin-bottom: 60px;
-  }
-
-  .section-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    margin-bottom: 12px;
-    display: block;
-  }
-
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-  }
-
-  /* EXPERIENCE CARDS */
-  .exp-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-  }
-
-  .exp-card {
-    background: var(--white);
-    border: 1px solid var(--ink-faint);
-    border-radius: var(--radius-lg);
-    padding: 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .exp-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-
-  .exp-card:hover::before { transform: scaleX(1); }
-  .exp-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(26,26,24,0.09);
-  }
-
-  .exp-card.featured {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
-  }
-
-  .exp-card.featured::before { transform: scaleX(1); }
-
-  .exp-header { display: flex; flex-direction: column; gap: 8px; }
-
-  .exp-company {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-
-  .exp-role {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--accent-light);
-  }
-
-  .exp-period {
-    font-size: 12px;
-    color: var(--ink-light);
-    font-weight: 300;
-    letter-spacing: 0.04em;
-  }
-
-  .exp-desc {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: var(--ink-mid);
-  }
-
-  .exp-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .exp-bullets li {
-    font-size: 13.5px;
-    color: var(--ink-mid);
-    font-weight: 300;
-    line-height: 1.6;
-    padding-left: 16px;
-    position: relative;
-  }
-
-  .exp-bullets li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 9px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-
-  .exp-metrics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: auto;
-  }
-
-  .metric-pill {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--accent);
-    background: var(--accent-pale);
-    padding: 5px 12px;
-    border-radius: 100px;
-    letter-spacing: 0.01em;
-  }
-
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-
-  .project-card {
-    background: var(--white);
-    border: 1px solid var(--ink-faint);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-  }
-
-  .project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(26,26,24,0.09);
-  }
-
-  .project-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-  }
-
-  .project-icon.green { background: var(--accent-pale); }
-  .project-icon.gold { background: var(--gold-pale); }
-  .project-icon.gray { background: var(--ink-faint); }
-
-  .project-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 19px;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-
-  .project-desc {
-    font-size: 13.5px;
-    font-weight: 300;
-    color: var(--ink-mid);
-    line-height: 1.65;
-    flex: 1;
-  }
-
-  .project-tag {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    margin-top: auto;
-  }
-
-  /* MUSIC */
-  .music-section {
-    background: var(--accent);
-    border-radius: 20px;
-    padding: 72px 64px;
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto 0;
-  }
-
-  .music-left { display: flex; flex-direction: column; gap: 24px; }
-
-  .music-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-  }
-
-  .music-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 3vw, 40px);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: white;
-  }
-
-  .music-desc {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.7);
-  }
-
-  .btn-music {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-    padding: 14px 24px;
-    border-radius: var(--radius);
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    width: fit-content;
-    transition: background 0.2s;
-  }
-
-  .btn-music:hover { background: rgba(255,255,255,0.2); }
-
-  .music-right {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .music-item {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .music-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    color: rgba(255,255,255,0.2);
-    line-height: 1;
-    min-width: 36px;
-  }
-
-  .music-item-info { flex: 1; }
-
-  .music-item-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: white;
-    margin-bottom: 3px;
-  }
-
-  .music-item-sub {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-  }
-
-  .music-placeholder {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.06);
-    padding: 4px 10px;
-    border-radius: 100px;
-    border: 1px dashed rgba(255,255,255,0.15);
-  }
-
-  /* PM TALKS */
-  .talks-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  .talk-card {
-    background: var(--white);
-    border: 1px solid var(--ink-faint);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .talk-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(26,26,24,0.08);
-  }
-
-  .talk-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 44px;
-    line-height: 1;
-    color: var(--ink-faint);
-    flex-shrink: 0;
-    width: 48px;
-  }
-
-  .talk-content { flex: 1; }
-
-  .talk-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--ink);
-    margin-bottom: 8px;
-    line-height: 1.2;
-  }
-
-  .talk-desc {
-    font-size: 13.5px;
-    font-weight: 300;
-    color: var(--ink-mid);
-    line-height: 1.6;
-    margin-bottom: 12px;
-  }
-
-  .talk-placeholder {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    background: var(--cream);
-    padding: 4px 10px;
-    border-radius: 100px;
-    border: 1px dashed var(--ink-faint);
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--ink-faint);
-    padding: 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    color: var(--ink);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-  }
-
-  .footer-links a {
-    font-size: 13px;
-    color: var(--ink-mid);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover { color: var(--accent); }
-
-  .footer-copy {
-    font-size: 12px;
-    color: var(--ink-light);
-  }
-
-  /* FADE IN ANIMATION */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-up {
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
-  .delay-4 { animation-delay: 0.45s; }
-  .delay-5 { animation-delay: 0.6s; }
-
-  /* FULL BLEED WRAPPER for music */
-  .full-bleed-wrap {
-    padding: 0 48px;
-    margin-bottom: 0;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    .nav-links { gap: 20px; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
-    section { padding: 72px 24px; }
-    .exp-grid { grid-template-columns: 1fr; }
-    .exp-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .music-section { grid-template-columns: 1fr; padding: 48px 32px; gap: 40px; }
-    .talks-grid { grid-template-columns: 1fr; }
-    .full-bleed-wrap { padding: 0 24px; }
-    footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1a1a18;
+  --ink-mid:#4a4a46;
+  --ink-light:#8a8a84;
+  --bg:#ffffff;
+  --bg-soft:#f7f7f5;
+  --border:#e8e8e3;
+  --accent:#2563eb;
+  --tag-bg:#f1f5f9;
+  --tag-text:#475569;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,0.08),0 2px 4px rgba(0,0,0,0.04);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--bg-soft);color:var(--ink);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;}
+.nav-name{font-family:'Lora',serif;font-size:16px;font-weight:500;color:var(--ink);text-decoration:none;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:13px;color:var(--ink-mid);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--ink);}
+
+.page{max-width:900px;margin:0 auto;padding:48px 32px 80px;}
+
+/* HERO */
+.hero{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:40px 44px;display:grid;grid-template-columns:1fr 176px;gap:40px;align-items:center;margin-bottom:20px;box-shadow:var(--shadow);}
+.hero-greeting{font-size:12px;font-weight:500;color:var(--ink-light);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+.hero-name{font-family:'Lora',serif;font-size:32px;font-weight:600;color:var(--ink);line-height:1.15;margin-bottom:5px;letter-spacing:-0.02em;}
+.hero-role{font-size:13.5px;font-weight:500;color:var(--accent);margin-bottom:16px;}
+.hero-bio{font-size:14px;font-weight:300;line-height:1.8;color:var(--ink-mid);margin-bottom:22px;max-width:460px;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:7px;}
+.badge{font-size:12px;font-weight:400;color:var(--ink-mid);background:var(--tag-bg);padding:5px 12px;border-radius:100px;border:1px solid var(--border);}
+.hero-photo{width:176px;height:176px;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+
+/* CARDS */
+.card{background:var(--bg);border:1px solid var(--border);border-radius:16px;margin-bottom:20px;box-shadow:var(--shadow);overflow:hidden;}
+.card-inner{padding:28px 44px 32px;}
+.section-heading{font-family:'Lora',serif;font-size:20px;font-weight:500;color:var(--ink);margin-bottom:18px;}
+
+/* CURRENTLY */
+.currently-rows{display:flex;flex-direction:column;}
+.currently-row{display:flex;align-items:flex-start;gap:14px;padding:11px 0;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--ink-mid);font-weight:300;line-height:1.5;}
+.currently-row:last-child{border-bottom:none;padding-bottom:0;}
+.currently-row:first-child{padding-top:0;}
+.dot{width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;margin-top:5px;}
+.currently-row a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid var(--border);transition:border-color 0.15s;}
+.currently-row a:hover{border-color:var(--ink);}
+
+/* TABS */
+.tab-bar{display:flex;gap:2px;border-bottom:1px solid var(--border);padding:0 44px;}
+.tab-btn{font-size:13px;font-weight:400;color:var(--ink-light);padding:10px 14px;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.15s,border-color 0.15s;display:flex;align-items:center;gap:6px;}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--ink);}
+.tab-btn:hover{color:var(--ink);}
+.tab-panel{display:none;padding:28px 44px 36px;}
+.tab-panel.active{display:block;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.skill-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:18px 20px;transition:box-shadow 0.15s,transform 0.15s;}
+.skill-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px);}
+.skill-icon{font-size:20px;margin-bottom:8px;}
+.skill-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:5px;}
+.skill-list{font-size:12.5px;font-weight:300;color:var(--ink-mid);line-height:1.6;}
+
+/* EXPERIENCE */
+.list-rows{display:flex;flex-direction:column;}
+.list-row{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);}
+.list-row:last-child{border-bottom:none;padding-bottom:0;}
+.list-row:first-child{padding-top:0;}
+.list-logo{width:40px;height:40px;border-radius:8px;background:var(--tag-bg);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;border:1px solid var(--border);}
+.list-body{}
+.list-title{font-size:13.5px;font-weight:600;color:var(--ink);}
+.list-sub{font-size:13px;font-weight:300;color:var(--ink-mid);}
+.list-meta{font-size:12px;font-weight:300;color:var(--ink-light);margin-top:2px;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;}
+.project-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow 0.15s,transform 0.15s;text-decoration:none;display:block;color:inherit;}
+.project-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.project-cover{height:120px;display:flex;align-items:center;justify-content:center;font-size:44px;border-bottom:1px solid var(--border);}
+.cover-bose{background:linear-gradient(135deg,#1a1a2e,#3a2d4e);}
+.cover-capstone{background:linear-gradient(135deg,#0f2027,#2c5364);}
+.cover-board{background:linear-gradient(135deg,#134e4a,#064e3b);}
+.project-body{padding:14px 16px;}
+.project-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.project-link{font-size:11.5px;color:var(--ink-light);margin-bottom:10px;display:block;}
+.project-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.project-tag{font-size:11px;color:var(--tag-text);background:var(--bg);border:1px solid var(--border);padding:3px 8px;border-radius:100px;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.contact-item{background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.contact-icon{font-size:18px;margin-bottom:7px;}
+.contact-label{font-size:11px;font-weight:600;color:var(--ink-light);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:3px;}
+.contact-value{font-size:12.5px;font-weight:300;color:var(--ink);line-height:1.5;}
+.contact-value a{color:var(--accent);text-decoration:none;}
+.contact-value a:hover{text-decoration:underline;}
+
+/* INTERESTS */
+.interests-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.interest-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.interest-icon{font-size:20px;margin-bottom:7px;}
+.interest-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.interest-desc{font-size:12.5px;font-weight:300;color:var(--ink-mid);line-height:1.55;}
+
+footer{text-align:center;padding:20px;font-size:12px;color:var(--ink-light);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.fade{opacity:0;animation:fadeUp 0.45s ease forwards;}
+.d1{animation-delay:0.04s;}.d2{animation-delay:0.1s;}.d3{animation-delay:0.17s;}.d4{animation-delay:0.24s;}.d5{animation-delay:0.31s;}
+
+@media(max-width:700px){
+  nav{padding:0 20px;}.nav-links{gap:16px;}
+  .page{padding:20px 14px 60px;}
+  .hero{grid-template-columns:1fr;padding:24px 20px;gap:20px;}
+  .hero-photo{width:90px;height:90px;order:-1;}
+  .card-inner,.tab-panel{padding:20px 20px 24px;}
+  .tab-bar{padding:0 20px;}
+  .skills-grid,.projects-grid,.contact-grid,.interests-grid{grid-template-columns:1fr 1fr;}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">Top Sortrakul</a>
+  <a class="nav-name" href="#">Top Sortrakul</a>
   <ul class="nav-links">
-    <li><a href="#experience">Work</a></li>
+    <li><a href="#nutshell">About</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#music">Music</a></li>
-    <li><a href="#talks">PM Talks</a></li>
-    <li><a href="mailto:natchapon.sortrakul@kellogg.northwestern.edu">Contact</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/Natchaponsor" target="_blank">GitHub ↗</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div>
-    <span class="hero-eyebrow fade-up">MBA Candidate, Kellogg + McCormick</span>
-    <h1 class="hero-title fade-up delay-1">
-      Product, <em>Design,</em><br>and Technology.
-    </h1>
-    <p class="hero-desc fade-up delay-2">
-      Hi, I'm Top. I'm an MBA + MS Design Innovation candidate at Northwestern University, 
-      with a background in building digital banking products across payments, lending, 
-      and AI-powered features for millions of users in Southeast Asia.
-    </p>
-    <div class="hero-cta fade-up delay-3">
-      <a href="#experience" class="btn-primary">View My Work &rarr;</a>
-      <a href="mailto:natchapon.sortrakul@kellogg.northwestern.edu" class="btn-outline">Get in Touch</a>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero fade d1">
+    <div>
+      <p class="hero-greeting">👋 Hi, I'm Top</p>
+      <h1 class="hero-name">Natchapon (Top) Sortrakul</h1>
+      <p class="hero-role">MBA + MS Design Innovation &nbsp;·&nbsp; Northwestern University, June 2026</p>
+      <p class="hero-bio">Product manager with 3 years building digital banking products for millions of users in Southeast Asia. Now at Kellogg blending business strategy, AI, and human-centered design to build products that sit at the intersection of technical depth and real user empathy.</p>
+      <div class="hero-badges">
+        <span class="badge">🏦 Fintech PM</span>
+        <span class="badge">🤖 AI Product Strategy</span>
+        <span class="badge">🎨 Design Innovation</span>
+        <span class="badge">🎓 Kellogg MBA 2026</span>
+        <span class="badge">🇹🇭 Bangkok → Evanston</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="photo.jpg" alt="Natchapon Top Sortrakul"/>
     </div>
   </div>
-  <div class="hero-right fade-up delay-4">
-    <div class="hero-stats-row">
-      <div class="hero-stat-card">
-        <p class="stat-label">Users Scaled</p>
-        <p class="stat-value">6M+</p>
-        <p class="stat-sub">from 2M at LINE BK</p>
+
+  <!-- CURRENTLY -->
+  <div class="card fade d2">
+    <div class="card-inner">
+      <h2 class="section-heading">Currently</h2>
+      <div class="currently-rows">
+        <div class="currently-row"><span class="dot"></span>MBA + MS Design Innovation at <a href="https://www.kellogg.northwestern.edu" target="_blank">Kellogg, Northwestern University</a> &nbsp;·&nbsp; June 2026</div>
+        <div class="currently-row"><span class="dot"></span>Venture Fellow at <a href="#" target="_blank">Equiseed</a> &nbsp;·&nbsp; Marketing Director, Southeast Asia Club</div>
+        <div class="currently-row"><span class="dot"></span>Previously Product Manager at <a href="https://github.com/Natchaponsor/new-bose-product-concept" target="_blank">LINE BK</a> (KasikornBank × LINE Joint Venture), Bangkok &nbsp;·&nbsp; 2021–2024</div>
+        <div class="currently-row"><span class="dot"></span>Co-founder of <a href="#">ChAMP Career Development Program</a> &nbsp;·&nbsp; Mentored 100+ aspiring PMs</div>
       </div>
-      <div class="hero-stat-card">
-        <p class="stat-label">Fraud Reduced</p>
-        <p class="stat-value">99%</p>
-        <p class="stat-sub">via biometric AI tuning</p>
-      </div>
-    </div>
-    <div class="hero-stats-row">
-      <div class="hero-stat-card">
-        <p class="stat-label">Cost Saved</p>
-        <p class="stat-value">$2.1M</p>
-        <p class="stat-sub">annually across initiatives</p>
-      </div>
-      <div class="hero-stat-card">
-        <p class="stat-label">PM Students Mentored</p>
-        <p class="stat-value">100+</p>
-        <p class="stat-sub">via Career Dev. Program</p>
-      </div>
-    </div>
-    <div class="tag-row fade-up delay-5">
-      <span class="tag">AI Product Strategy</span>
-      <span class="tag">Payments</span>
-      <span class="tag">FinTech</span>
-      <span class="tag">Human-Centered Design</span>
-      <span class="tag">Prompt Engineering</span>
-      <span class="tag">SQL &amp; Python</span>
     </div>
   </div>
+
+  <!-- ME IN A NUTSHELL -->
+  <div class="card fade d3" id="nutshell">
+    <div class="card-inner" style="padding-bottom:0;">
+      <h2 class="section-heading">Me in a nutshell</h2>
+    </div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(event,'skills','a')">
+        <span>🗂</span> Skills
+      </button>
+      <button class="tab-btn" onclick="switchTab(event,'experience','a')">
+        <span>💼</span> Experience
+      </button>
+      <button class="tab-btn" onclick="switchTab(event,'education','a')">
+        <span>🎓</span> Education
+      </button>
+    </div>
+    <div class="tab-panel active" id="a-skills">
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-icon">📋</div><div class="skill-title">Product Management</div><div class="skill-list">Roadmapping, PRD Writing, Agile, Sprint Planning, A/B Testing, UAT, User Story Mapping, Stakeholder Alignment</div></div>
+        <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-title">AI and Prompt Engineering</div><div class="skill-list">LLM APIs, Claude Code, Prompt Frameworks, Model Benchmarking, AI Safety Guardrails, Multi-persona Simulation</div></div>
+        <div class="skill-card"><div class="skill-icon">💻</div><div class="skill-title">Technical</div><div class="skill-list">Python, SQL, R, Git, Jira, Confluence, Tableau, Cohort Analysis, Funnel Analysis</div></div>
+        <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-title">Design</div><div class="skill-list">Figma, Miro, Human-Centered Design, Ethnographic Research, Wireframing, User Journey Mapping</div></div>
+        <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-title">Data Analytics</div><div class="skill-list">K-Means Clustering, Customer Segmentation, Market Sizing, Competitive Analysis, Performance Dashboards</div></div>
+        <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-title">Languages</div><div class="skill-list">Thai (Native), English (Fluent), Japanese (Beginner)</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="a-experience">
+      <div class="list-rows">
+        <div class="list-row"><div class="list-logo">🏦</div><div class="list-body"><div class="list-title">KasikornBank | LINE BK</div><div class="list-sub">Product Manager → Associate PM &nbsp;·&nbsp; Social Banking Joint Venture</div><div class="list-meta">2021 – 2024 &nbsp;·&nbsp; Bangkok, Thailand</div></div></div>
+        <div class="list-row"><div class="list-logo">🎓</div><div class="list-body"><div class="list-title">True Fiktion</div><div class="list-sub">AI Product Strategy Intern &nbsp;·&nbsp; EdTech Start-up</div><div class="list-meta">Summer 2025 &nbsp;·&nbsp; Chicago, IL</div></div></div>
+        <div class="list-row"><div class="list-logo">✈️</div><div class="list-body"><div class="list-title">Agoda (Booking Holdings)</div><div class="list-sub">Business Intelligence Developer Intern</div><div class="list-meta">2020 &nbsp;·&nbsp; Bangkok, Thailand</div></div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="a-education">
+      <div class="list-rows">
+        <div class="list-row"><div class="list-logo">🎓</div><div class="list-body"><div class="list-title">Northwestern University &nbsp;·&nbsp; Kellogg + McCormick</div><div class="list-sub">MMM Dual Degree &nbsp;·&nbsp; MBA + MS Design Innovation &nbsp;·&nbsp; Merit Scholarship</div><div class="list-meta">2024 – 2026 &nbsp;·&nbsp; Evanston, IL &nbsp;·&nbsp; 3Y OPT Eligible</div></div></div>
+        <div class="list-row"><div class="list-logo">🏛</div><div class="list-body"><div class="list-title">Chulalongkorn University</div><div class="list-sub">B.Eng Aerospace Engineering &nbsp;·&nbsp; Summa cum laude &nbsp;·&nbsp; Merit Scholarship</div><div class="list-meta">2017 – 2021 &nbsp;·&nbsp; Bangkok, Thailand</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="card fade d4" id="projects">
+    <div class="card-inner">
+      <h2 class="section-heading">Projects</h2>
+      <p style="font-size:13px;font-weight:300;color:var(--ink-mid);">Open for details 👇</p>
+      <div class="projects-grid">
+        <a class="project-card" href="https://github.com/Natchaponsor/new-bose-product-concept" target="_blank">
+          <div class="project-cover cover-bose">🎧</div>
+          <div class="project-body">
+            <div class="project-title">Bose Aura-Shift Strategy</div>
+            <span class="project-link">github.com/Natchaponsor &nbsp;·&nbsp; Live demo ↗</span>
+            <div class="project-tags"><span class="project-tag">AI Strategy</span><span class="project-tag">K-Means</span><span class="project-tag">Segmentation</span><span class="project-tag">User Research</span></div>
+          </div>
+        </a>
+        <a class="project-card" href="#" style="pointer-events:none;">
+          <div class="project-cover cover-capstone">🏦</div>
+          <div class="project-body">
+            <div class="project-title">Fortune 500 Bank Capstone</div>
+            <span class="project-link">Kellogg MBA &nbsp;·&nbsp; NDA Protected</span>
+            <div class="project-tags"><span class="project-tag">Cohort Analysis</span><span class="project-tag">Python</span><span class="project-tag">Claude Code</span><span class="project-tag">AI Strategy</span></div>
+          </div>
+        </a>
+        <a class="project-card" href="https://github.com/Natchaponsor/board-game-design" target="_blank">
+          <div class="project-cover cover-board">🎲</div>
+          <div class="project-body">
+            <div class="project-title">Board Game Design</div>
+            <span class="project-link">github.com/Natchaponsor &nbsp;·&nbsp; In Progress</span>
+            <div class="project-tags"><span class="project-tag">Game Design</span><span class="project-tag">Design Thinking</span><span class="project-tag">Prototype</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT + INTERESTS -->
+  <div class="card fade d5" id="contact">
+    <div class="card-inner" style="padding-bottom:0;">
+      <h2 class="section-heading">Let's get in touch</h2>
+    </div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(event,'contact','b')">
+        <span>📬</span> Contact
+      </button>
+      <button class="tab-btn" onclick="switchTab(event,'interests','b')">
+        <span>🌟</span> Interests
+      </button>
+    </div>
+    <div class="tab-panel active" id="b-contact">
+      <div class="contact-grid">
+        <div class="contact-item"><div class="contact-icon">✉️</div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:natchapon.sortrakul@kellogg.northwestern.edu">natchapon.sortrakul@kellogg.northwestern.edu</a></div></div>
+        <div class="contact-item"><div class="contact-icon">📱</div><div class="contact-label">Phone</div><div class="contact-value"><a href="tel:+12244917917">(224) 491-7917</a></div></div>
+        <div class="contact-item"><div class="contact-icon">💼</div><div class="contact-label">LinkedIn</div><div class="contact-value"><a href="https://linkedin.com/in/natchapon-sortrakul" target="_blank">linkedin.com/in/natchapon-sortrakul</a></div></div>
+        <div class="contact-item"><div class="contact-icon">🐙</div><div class="contact-label">GitHub</div><div class="contact-value"><a href="https://github.com/Natchaponsor" target="_blank">github.com/Natchaponsor</a></div></div>
+        <div class="contact-item"><div class="contact-icon">📍</div><div class="contact-label">Location</div><div class="contact-value">Evanston, IL &nbsp;·&nbsp; Open to Relocation</div></div>
+        <div class="contact-item"><div class="contact-icon">🛂</div><div class="contact-label">Visa Status</div><div class="contact-value">3-Year OPT Eligible &nbsp;·&nbsp; June 2026</div></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="b-interests">
+      <div class="interests-grid">
+        <div class="interest-card"><div class="interest-icon">🎷</div><div class="interest-title">Jazz and Saxophone</div><div class="interest-desc">Former orchestra lead. Organized a music tour for 1,000+ students in rural Thailand.</div></div>
+        <div class="interest-card"><div class="interest-icon">🧗</div><div class="interest-title">Rock Climbing</div><div class="interest-desc">Indoor bouldering and outdoor sport climbing. My preferred way to think through hard problems.</div></div>
+        <div class="interest-card"><div class="interest-icon">✈️</div><div class="interest-title">Travel</div><div class="interest-desc">20+ countries. Curious about how people in different places solve the same problems differently.</div></div>
+        <div class="interest-card"><div class="interest-icon">🎲</div><div class="interest-title">Board Game Design</div><div class="interest-desc">Designing original games exploring pattern recognition and communication mechanics.</div></div>
+        <div class="interest-card"><div class="interest-icon">💳</div><div class="interest-title">Credit Card Points</div><div class="interest-desc">Optimizing reward systems and transfer partners. Accidentally teaches a lot about product loyalty loops.</div></div>
+        <div class="interest-card"><div class="interest-icon">🤝</div><div class="interest-title">Mentorship</div><div class="interest-desc">Co-founded ChAMP, a career development program that mentored 100+ college students into PM roles.</div></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header">
-    <span class="section-eyebrow">Professional Work</span>
-    <h2 class="section-title">Where I've Built Things</h2>
-  </div>
+<footer>&copy; 2026 Natchapon (Top) Sortrakul &nbsp;·&nbsp; Built and deployed via GitHub Pages</footer>
 
-  <div class="exp-grid">
-
-    <!-- LINE BK - Featured -->
-    <div class="exp-card featured">
-      <div style="display:flex; flex-direction:column; gap: 20px;">
-        <div class="exp-header">
-          <p class="exp-period">2021 – 2024 &nbsp;·&nbsp; Bangkok, Thailand</p>
-          <h3 class="exp-company">KasikornBank | LINE BK</h3>
-          <p class="exp-role">Product Manager &rarr; Associate PM &rarr; PM</p>
-        </div>
-        <p class="exp-desc">
-          LINE BK is a social banking joint venture between Thailand's largest commercial 
-          bank and LINE, the country's most popular messaging platform. I joined as 
-          Associate PM and grew to lead product across payments, lending, and platform 
-          infrastructure for a fast-growing digital-first user base of over 50 million customers.
-        </p>
-        <div class="exp-metrics">
-          <span class="metric-pill">2M &rarr; 6M users</span>
-          <span class="metric-pill">99% fraud reduction</span>
-          <span class="metric-pill">$1.8M/year saved</span>
-          <span class="metric-pill">50% drop-off reduction</span>
-        </div>
-      </div>
-      <div>
-        <ul class="exp-bullets">
-          <li>Led cross-functional team of 30+ across engineering, design, data science, and legal to scale a social banking platform from 2M to 6M active users within two years.</li>
-          <li>Directed engineering team to train a pattern recognition model that auto-extracted order details and generated one-tap payment links, growing total payment volume by 20%.</li>
-          <li>Architected a cross-product onboarding journey with a unified KYC module across five high-margin products, cutting funnel drop-off by 50%.</li>
-          <li>Tuned ML inference thresholds across 20M+ biometric datasets, reducing payment fraud transactions by 99% without degrading user experience.</li>
-          <li>Secured the first regulatory sandbox approval from Thailand's Central Bank for a $1.2B underbanked P2P lending market by leading product discovery and stakeholder alignment.</li>
-          <li>Conducted root cause analyses on cashback campaign losses and presented data-driven recommendations to executives, saving $1.8M per year in policy adjustments.</li>
-          <li>Authored PRDs to resolve notification bottlenecks using asynchronous message queuing, cutting peak latency from 4 hours to under 1 second and expanding capacity by 400%.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- True Fiktion -->
-    <div class="exp-card">
-      <div class="exp-header">
-        <p class="exp-period">2025 &nbsp;·&nbsp; Chicago, IL</p>
-        <h3 class="exp-company">True Fiktion</h3>
-        <p class="exp-role">AI Product Strategy Intern</p>
-      </div>
-      <p class="exp-desc">
-        EdTech start-up combining design thinking and generative AI to create personalized 
-        learning experiences for K-12 students. Focused on building AI workflows 
-        that scale creative content production while preserving historical accuracy.
-      </p>
-      <ul class="exp-bullets">
-        <li>Built a Deep Research-to-Script workflow using multimodal LLMs, reducing graphic novel production time from two weeks to one day.</li>
-        <li>Designed automated multi-persona simulations with frontier models to represent four user types, enabling autonomous concept validation before human testing.</li>
-        <li>Standardized AI safety guardrails into a comprehensive prompt playbook, establishing content boundaries that mitigated hallucination risks across all AI-generated educational content.</li>
-      </ul>
-      <div class="exp-metrics">
-        <span class="metric-pill">80% faster production</span>
-        <span class="metric-pill">Prompt Engineering</span>
-        <span class="metric-pill">LLM Workflows</span>
-      </div>
-    </div>
-
-    <!-- Kellogg / Education -->
-    <div class="exp-card">
-      <div class="exp-header">
-        <p class="exp-period">2024 – 2026 &nbsp;·&nbsp; Evanston, IL</p>
-        <h3 class="exp-company">Northwestern University</h3>
-        <p class="exp-role">MMM Dual Degree: MBA + MS Design Innovation</p>
-      </div>
-      <p class="exp-desc">
-        Kellogg School of Management and McCormick School of Engineering. 
-        Merit Scholarship Recipient. Specializing in Finance and Design Innovation 
-        with coursework in AI for Marketing, Ethnographic Research, and Product Management.
-      </p>
-      <ul class="exp-bullets">
-        <li>Capstone: Built a cohort analysis prototype using Claude Code and Python on a Fortune 500 bank's customer data, translating retention insights into a scalable AI growth roadmap.</li>
-        <li>Venture Fellow at Equiseed: Conducted market research on high-potential start-ups and funding resources.</li>
-        <li>Marketing Director, Southeast Asia Club.</li>
-      </ul>
-      <div class="exp-metrics">
-        <span class="metric-pill">Merit Scholarship</span>
-        <span class="metric-pill">Finance + Design</span>
-        <span class="metric-pill">3Y OPT Eligible</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header">
-    <span class="section-eyebrow">Other Projects</span>
-    <h2 class="section-title">Things I've Built Beyond Work</h2>
-  </div>
-
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-icon green">🏦</div>
-      <h3 class="project-name">Fortune 500 Bank Capstone</h3>
-      <p class="project-desc">
-        Translated real customer data from a Fortune 500 bank into an AI product strategy 
-        and growth roadmap. Rapidly prototyped a cohort analysis model using Claude Code 
-        and Python to uncover retention and segmentation insights, then mapped these into 
-        a scalable digital banking strategy for growth-stage startups.
-      </p>
-      <p class="project-tag">AI Strategy &nbsp;·&nbsp; Python &nbsp;·&nbsp; Data Analysis</p>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon gold">🎲</div>
-      <h3 class="project-name">Board Game Design</h3>
-      <p class="project-desc">
-        A personal side project exploring game design mechanics, starting with a custom 
-        version of Codenames. The goal is to design games that test pattern recognition, 
-        communication, and creative thinking, with mechanics inspired by design thinking 
-        principles from the MMM program.
-      </p>
-      <p class="project-tag">Game Design &nbsp;·&nbsp; Prototype &nbsp;·&nbsp; In Progress</p>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon gray">✈️</div>
-      <h3 class="project-name">Agoda BI Internship</h3>
-      <p class="project-desc">
-        As an undergraduate, built SQL pipelines processing over 1 million hotel booking 
-        records at Agoda (Booking Holdings). Shipped an internal Q&A platform to accelerate 
-        analytics review and support strategy and product decision-making across teams.
-      </p>
-      <p class="project-tag">SQL &nbsp;·&nbsp; Data Engineering &nbsp;·&nbsp; Analytics</p>
-    </div>
-  </div>
-</section>
-
-<!-- MUSIC -->
-<div class="full-bleed-wrap" id="music">
-  <div class="music-section">
-    <div class="music-left">
-      <p class="music-eyebrow">My Music</p>
-      <h2 class="music-title">Jazz, Saxophone &amp; the Space Between Notes</h2>
-      <p class="music-desc">
-        Music has been part of my life long before product management was. I played 
-        saxophone in jazz orchestras throughout university, led a musical tour 
-        bringing live concerts to 1,000+ high school students in rural Thailand, 
-        and still find creativity through music today.
-      </p>
-      <a href="#" class="btn-music">
-        Listen &nbsp;&rarr;
-        &nbsp;<span class="music-placeholder">Link coming soon</span>
-      </a>
-    </div>
-    <div class="music-right">
-      <div class="music-item">
-        <p class="music-num">01</p>
-        <div class="music-item-info">
-          <p class="music-item-title">Jazz Orchestra</p>
-          <p class="music-item-sub">Saxophone lead, university band</p>
-        </div>
-        <span class="music-placeholder">Coming soon</span>
-      </div>
-      <div class="music-item">
-        <p class="music-num">02</p>
-        <div class="music-item-info">
-          <p class="music-item-title">Rural Music Tour</p>
-          <p class="music-item-sub">1,000+ students, workshops &amp; mini-concerts</p>
-        </div>
-        <span class="music-placeholder">Coming soon</span>
-      </div>
-      <div class="music-item">
-        <p class="music-num">03</p>
-        <div class="music-item-info">
-          <p class="music-item-title">Music Production</p>
-          <p class="music-item-sub">Original compositions &amp; arrangements</p>
-        </div>
-        <span class="music-placeholder">Coming soon</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PM TALKS -->
-<section id="talks">
-  <div class="section-header">
-    <span class="section-eyebrow">Product Management Talks</span>
-    <h2 class="section-title">Sharing What I've Learned</h2>
-  </div>
-
-  <div class="talks-grid">
-    <div class="talk-card">
-      <p class="talk-num">01</p>
-      <div class="talk-content">
-        <h3 class="talk-name">ChAMP - Career Development Program</h3>
-        <p class="talk-desc">
-          Co-founded a structured career development program that mentored 100+ college 
-          students aspiring to become product managers. Conducted hands-on workshops 
-          covering product ideation, go-to-market strategy, and the PM role in tech companies.
-        </p>
-        <span class="talk-placeholder">Link coming soon</span>
-      </div>
-    </div>
-    <div class="talk-card">
-      <p class="talk-num">02</p>
-      <div class="talk-content">
-        <h3 class="talk-name">PM Corner Interview</h3>
-        <p class="talk-desc">
-          Featured in PM Corner's interview series, discussing career paths, transitions 
-          into product roles, and practical advice for aspiring PMs on navigating the 
-          industry and building a strong product mindset.
-        </p>
-        <span class="talk-placeholder">Link coming soon</span>
-      </div>
-    </div>
-    <div class="talk-card">
-      <p class="talk-num">03</p>
-      <div class="talk-content">
-        <h3 class="talk-name">Triam Talk</h3>
-        <p class="talk-desc">
-          A speaking engagement sharing insights on product management, career growth, 
-          and the intersection of technology and design, aimed at students and early-career 
-          professionals preparing to enter the product space.
-        </p>
-        <span class="talk-placeholder">Link coming soon</span>
-      </div>
-    </div>
-    <div class="talk-card">
-      <p class="talk-num">04</p>
-      <div class="talk-content">
-        <h3 class="talk-name">PM Corner: Zero to Hero Event</h3>
-        <p class="talk-desc">
-          Organized and participated in PM Corner's flagship community event, guiding 
-          attendees from zero product knowledge to practical skills in product thinking, 
-          user research, and launching features, through workshops and live case studies.
-        </p>
-        <span class="talk-placeholder">Link coming soon</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p class="footer-name">Natchapon (Top) Sortrakul</p>
-  <div class="footer-links">
-    <a href="mailto:natchapon.sortrakul@kellogg.northwestern.edu">Email</a>
-    <a href="https://linkedin.com/in/natchapon-sortrakul" target="_blank">LinkedIn</a>
-    <a href="#experience">Work</a>
-    <a href="#talks">PM Talks</a>
-  </div>
-  <p class="footer-copy">&copy; 2026 Top Sortrakul</p>
-</footer>
-
+<script>
+function switchTab(e, name, group) {
+  const btn = e.currentTarget;
+  const card = btn.closest('.card');
+  card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  card.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  card.querySelector('#' + group + '-' + name).classList.add('active');
+}
+</script>
 </body>
 </html>
